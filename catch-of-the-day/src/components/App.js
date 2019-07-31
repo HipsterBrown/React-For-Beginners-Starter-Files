@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
+import sampleFishes from '../sample-fishes';
 
 const App = () => {
   const [fishes, setFishes] = useState({});
@@ -9,31 +10,19 @@ const App = () => {
 
   const addFish = useCallback(
     fish => {
-      console.log('Adding a fish!', fish);
-      // get copy of current state
-      const updatedFishes = {...fishes};
-
-      // update the state with the new fish
-      updatedFishes[`fish${Date.now()}`] = fish;
-
-      // set the new state to re-render our component
-      setFishes(updatedFishes);
-
-      // or as a callback
-
-      // setFishes(currentFishes => {
-      //   return {
-      //     ...currentFishes,
-      //     [`fish${Date.now()}`]: fish,
-      //   };
-      // });
-
-      // or even fancier
-
-      // setFishes(currentFishes => ({ ...currentFishes, [`fish${Date.now()}`]: fish }));
+      setFishes(currentFishes => {
+        return {
+          ...currentFishes,
+          [`fish${Date.now()}`]: fish,
+        };
+      });
     },
     [fishes],
   );
+
+  const loadSampleFishes = useCallback(() => {
+    setFishes(sampleFishes);
+  }, []);
 
   console.log(fishes);
 
@@ -43,7 +32,7 @@ const App = () => {
         <Header tagline="Fresh Seafood Market" age={100} />
       </div>
       <Order />
-      <Inventory addFish={addFish} />
+      <Inventory addFish={addFish} loadSampleFishes={loadSampleFishes} />
     </div>
   );
 };
