@@ -25,6 +25,14 @@ const App = () => {
     setFishes(sampleFishes);
   }, []);
 
+  const addToOrder = useCallback(key => {
+    // update order state to add a new entry or increment an existing entry
+    setOrder(currentOrder => ({
+      ...currentOrder,
+      [key]: currentOrder[key] + 1 || 1,
+    }));
+  }, []);
+
   console.log(fishes);
 
   return (
@@ -33,7 +41,12 @@ const App = () => {
         <Header tagline="Fresh Seafood Market" age={100} />
         <ul className="fishes">
           {Object.keys(fishes).map(key => (
-            <Fish {...fishes[key]} key={key} />
+            <Fish
+              {...fishes[key]}
+              key={key}
+              index={key}
+              addToOrder={addToOrder}
+            />
           ))}
         </ul>
       </div>
