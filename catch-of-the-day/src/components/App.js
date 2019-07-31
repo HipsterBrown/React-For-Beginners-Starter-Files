@@ -5,6 +5,9 @@ import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 
+// create addToOrder callback to update order state w/ key
+// either add a new entry or increment an existing entry
+
 const App = () => {
   const [fishes, setFishes] = useState({});
   const [order, setOrder] = useState({});

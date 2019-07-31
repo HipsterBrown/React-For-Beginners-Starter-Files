@@ -1,6 +1,9 @@
 import React from 'react';
 import {formatPrice} from '../helpers';
 
+// use status prop to change button state, disabled && text
+// use addToOrder && index props for button onClick
+
 const Fish = ({desc, image, name, price}) => {
   return (
     <div class="menu-fish">
