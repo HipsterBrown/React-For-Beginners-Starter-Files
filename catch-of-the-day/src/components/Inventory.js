@@ -1,12 +1,16 @@
 import React from 'react';
+import AddFishForm from './AddFishForm';
 
 // 1. convert to functional component
 // 2. add AddFishForm component, passing addFish prop to it
 
-class Inventory extends React.Component {
-  render() {
-    return <div className="inventory">Inventory!!!</div>;
-  }
-}
+const Inventory = ({addFish}) => {
+  return (
+    <div className="inventory">
+      <h3>Inventory</h3>
+      <AddFishForm addFish={addFish} />
+    </div>
+  );
+};
 
 export default Inventory;
