@@ -7,7 +7,7 @@ const AddFishForm = ({addFish}) => {
     const {name, price, status, desc, image} = event.target.elements;
     const fish = {
       name: name.value,
-      price: parseFloat(price.value),
+      price: parseFloat(price.value) * 100,
       status: status.value,
       desc: desc.value,
       image: image.value,
