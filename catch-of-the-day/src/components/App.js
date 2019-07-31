@@ -4,6 +4,10 @@ import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 
+// 1. create Fish component
+// 2. list using Object.key(fishes).map
+// 3. explain "key" prop on lists of items
+
 const App = () => {
   const [fishes, setFishes] = useState({});
   const [order, setOrder] = useState({});
